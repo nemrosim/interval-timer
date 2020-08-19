@@ -8,3 +8,7 @@
 ![](images/4-concat.jpg)
 ## Example-6 (ajax request)
 ![](images/6-ajax.jpg)
+## Example-7 (own Observers)
+![](images/7-ownObserver.jpg)
+## Example-7 (multiple Observers)
+![](images/8-multipleObservers.jpg)
