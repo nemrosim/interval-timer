@@ -65,7 +65,7 @@ new Observable(subscribe).subscribe(some => console.log(some));
  */
 Observable.create(subscribe).subscribe(some => console.log(some));
 ```
-![](images/1-next-error-complete.jpg)
+![](rx-examples/images/1-next-error-complete.jpg)
 
 ---
 ## Example-2 (of)
@@ -75,7 +75,7 @@ const {of} = require('rxjs');
 of('hello', 'world', true, 333)
     .subscribe(val => console.log(val));
 ```
-![](images/2-of.jpg)
+![](rx-examples/images/2-of.jpg)
 
 ---
 ## Example-3 (from)
@@ -105,7 +105,7 @@ from(someArray)
     .subscribe(val => console.log(val));
 
 ```
-![](images/3-from.jpg)
+![](rx-examples/images/3-from.jpg)
 
 ---
 ## Example-4 (concat)
@@ -141,7 +141,7 @@ concat(source1$, source2$)
     .subscribe(val => console.log(val));
 
 ```
-![](images/4-concat.jpg)
+![](rx-examples/images/4-concat.jpg)
 
 ---
 ## Example-5 (from Event)
@@ -158,7 +158,7 @@ fromEvent(button, 'click')
         someDiv.innerHTML += 'hello world' + '<br>';
     });
 ```
-![](images/6-ajax.jpg)
+![](rx-examples/images/6-ajax.jpg)
 
 ---
 ## Example-6 (ajax request)
@@ -184,7 +184,7 @@ ajax({
     });
 ```
 
-![](images/6-ajax.jpg)
+![](rx-examples/images/6-ajax.jpg)
 
 ---
 ## Example-7 (own Observers)
@@ -215,7 +215,7 @@ of(1, 2, 3, 4, 5).subscribe(
     () => console.log('Second version is done')  // optional
 );
 ```
-![](images/7-ownObserver.jpg)
+![](rx-examples/images/7-ownObserver.jpg)
 
 ---
 ## Example-8 (multiple Observers)
@@ -254,7 +254,7 @@ setTimeout(() => {
 }, [2000])
 
 ```
-![](images/8-multipleObservers.jpg)
+![](rx-examples/images/8-multipleObservers.jpg)
 
 ---
 ## Example-9 (unsubscribe)
@@ -292,7 +292,7 @@ const timerTwo = timer$(1000).subscribe(
 // !!! Result with this line commented
 // timerOne.add(timerTwo) 
 ```
-![](images/10-own-interval(commented).jpg)
+![](rx-examples/images/10-own-interval(commented).jpg)
 ```javascript
 const timerOne = timer$(1000).subscribe(
 // some code
@@ -304,7 +304,7 @@ const timerTwo = timer$(1000).subscribe(
 
 timerOne.add(timerTwo)  // <---- with add function !!!!
 ```
-![](images/10-own-interval(with%20add).jpg)
+![](rx-examples/images/10-own-interval(with%20add).jpg)
 
 ---
 ## Example-11 (operators)
@@ -329,7 +329,7 @@ of(1, 2, 3, 4, 5, 6).pipe(
     filter(value => value > 5)
 ).subscribe(val => console.log(val));
 ```
-![](images/11-operators.jpg)
+![](rx-examples/images/11-operators.jpg)
 
 ---
 ## Example-12 (mergeMap/tap operators)
@@ -358,7 +358,7 @@ ajax({
         console.log(result);
     })
 ```
-![](images/12-merge-map.gif)
+![](rx-examples/images/12-merge-map.gif)
 
 ---
 ## Example-13 (catch errors)
@@ -399,4 +399,4 @@ ajax({
         complete => console.log('✅ Completed')
     )
 ```
-![](images/13-catch-errors.gif)
+![](rx-examples/images/13-catch-errors.gif)
