@@ -1,10 +1,4 @@
 import moment from 'moment';
-import { interval } from 'rxjs';
-
-//emit value in sequence every 1 second
-const source = interval(1000);
-
-console.log(source);
 
 export const timer = () => {
     let iteration = 0;
@@ -24,4 +18,4 @@ export const timer = () => {
     }, [1000])
 }
 
-// timer();
+timer();
