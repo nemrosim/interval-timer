@@ -19,5 +19,5 @@ const someArray = [
     }
 ];
 
-from(someArrayfrom).subscribe(val=>console.log(val));
+from(someArray).subscribe(val=>console.log(val));
 
