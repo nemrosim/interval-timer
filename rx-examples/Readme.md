@@ -10,5 +10,35 @@
 ![](images/6-ajax.jpg)
 ## Example-7 (own Observers)
 ![](images/7-ownObserver.jpg)
-## Example-7 (multiple Observers)
+## Example-8 (multiple Observers)
 ![](images/8-multipleObservers.jpg)
+
+## Example-9 (unsubscribe)
+No image
+
+## Example-10 (Add function + own interval implementation)
+```javascript
+const timerOne = timer$(1000).subscribe(
+// some code
+);
+
+const timerTwo = timer$(1000).subscribe(
+// some code
+);
+
+// !!! Result with this line commented
+// timerOne.add(timerTwo) 
+```
+![](images/10-own-interval(commented).jpg)
+```javascript
+const timerOne = timer$(1000).subscribe(
+// some code
+);
+
+const timerTwo = timer$(1000).subscribe(
+// some code
+);
+
+timerOne.add(timerTwo)  // <---- with add function !!!!
+```
+![](images/10-own-interval(with%20add).jpg)
