@@ -2,51 +2,52 @@ const {Observable} = require('rxjs');
 
 const someArray = [
     {
-        id:1,
+        id: 1,
         name: 'One'
     },
     {
-        id:2,
+        id: 2,
         name: 'Two'
     },
     {
-        id:3,
+        id: 3,
         name: 'Three'
     },
     {
-        id:4,
+        id: 4,
         name: 'Four'
     }
 ];
 
 const subscribe = (subscriber) => {
-    // var 1
+    // Variant 1
     // for (let book of someArray){
     //     subscriber.next(book);
     // }
 
-    const interval = setInterval(()=>{
+    const intervalID = setInterval(() => {
         console.log('Interval. Print something...')
-    },[1000]);
+    }, [1000]);
 
-    // var 2
-    someArray.forEach(element=>{
+    // Variant 2
+    someArray.forEach(element => {
         subscriber.next(element);
-        if(element.id===5){
+        if (element.id === 5) {
             subscriber.error('some error');
         }
     })
 
-    setTimeout(()=>{
+    setTimeout(() => {
         console.log('Timeout. Subscriber.complete()')
         subscriber.complete();
-    },[2000]);
+    }, [2000]);
 
     /**
-     * This is like "useEffect" hook return
+     * This is like "useEffect" hook in React
+     * What should be done on "clean-up" (after completed, for example)
      */
-    return ()=>{
-        clearInterval(interval);
+    return () => {
+        clearInterval(intervalID);
         console.log('Return function. Done!');
     }
 }
@@ -54,11 +55,11 @@ const subscribe = (subscriber) => {
 /**
  * "$" sign is a RxJS convention that it stores an Observable
  */
-new Observable(subscribe).subscribe(some=>console.log(some));
+new Observable(subscribe).subscribe(some => console.log(some));
 
 /**
- * or the same.
+ * Same implementation, but...
  * !!!!create() function is deprecated
  */
-// Observable.create(subscribe).subscribe(some=>console.log(some));
+Observable.create(subscribe).subscribe(some => console.log(some));
 

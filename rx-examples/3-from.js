@@ -2,22 +2,23 @@ const {from} = require('rxjs');
 
 const someArray = [
     {
-        id:1,
+        id: 1,
         name: 'One'
     },
     {
-        id:2,
+        id: 2,
         name: 'Two'
     },
     {
-        id:3,
+        id: 3,
         name: 'Three'
     },
     {
-        id:4,
+        id: 4,
         name: 'Four'
     }
 ];
 
-from(someArray).subscribe(val=>console.log(val));
+from(someArray)
+    .subscribe(val => console.log(val));
 

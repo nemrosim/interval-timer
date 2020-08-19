@@ -18,13 +18,11 @@ of(1, 2, 3, 4, 5).subscribe(ownObserver);
 
 // OR the same
 
-//#region
 of(1, 2, 3, 4, 5).subscribe(
     null, // optional. Can be NULL
     (error) => console.log('Error:', error), // optional
     () => console.log('Second version is done')  // optional
 );
-//#endregion
 
 
 

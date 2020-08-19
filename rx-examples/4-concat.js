@@ -25,5 +25,6 @@ const array2 = [
 const source1$ = from(array1)
 const source2$ = from(array2)
 
-concat(source1$, source2$).subscribe(val => console.log(val));
+concat(source1$, source2$)
+    .subscribe(val => console.log(val));
 
