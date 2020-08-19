@@ -2,5 +2,7 @@
 ![](images/1-next-error-complete.jpg)
 ## Example-2 (of)
 ![](images/2-of.jpg)
-## Example-2 (from)
+## Example-3 (from)
 ![](images/3-from.jpg)
+## Example-4 (concat)
+![](images/4-concat.jpg)
