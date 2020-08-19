@@ -6,3 +6,5 @@
 ![](images/3-from.jpg)
 ## Example-4 (concat)
 ![](images/4-concat.jpg)
+## Example-6 (ajax request)
+![](images/6-ajax.jpg)
