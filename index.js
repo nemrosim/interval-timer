@@ -1,4 +1,6 @@
-const timer = require('./timer');
 
+require("@babel/register")({
+    presets: ["@babel/preset-env"]
+});
 
-timer();
+module.exports = require('./timer.js')

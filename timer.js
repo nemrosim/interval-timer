@@ -1,7 +1,7 @@
-const moment = require('moment');
+import moment from 'moment';
 
-function timer () {
-    let second = 0;
+export const timer = () => {
+    let iteration = 0;
     let date = 819151255000;
 
     const interval = setInterval(() => {
@@ -10,10 +10,12 @@ function timer () {
         const res = moment(new Date(date));
         console.log(res.format('HH:mm:ss'))
 
-        if (second === 20) {
+        if (iteration === 7) {
             clearInterval(interval)
+        } else {
+            iteration++;
         }
     }, [1000])
 }
 
-module.exports = timer
+timer();
