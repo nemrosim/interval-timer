@@ -10,6 +10,7 @@
 ![](images/6-ajax.jpg)
 ## Example-7 (own Observers)
 ![](images/7-ownObserver.jpg)
+
 ## Example-8 (multiple Observers)
 ![](images/8-multipleObservers.jpg)
 
@@ -42,3 +43,16 @@ const timerTwo = timer$(1000).subscribe(
 timerOne.add(timerTwo)  // <---- with add function !!!!
 ```
 ![](images/10-own-interval(with%20add).jpg)
+
+---
+## Example-11 (operators)
+```javascript
+const {of} = require('rxjs');
+const {map, filter} = require('rxjs/operators');
+
+of(1, 2, 3, 4, 5, 6).pipe(
+    map(value => value * 2),
+    filter(value => value > 5)
+).subscribe(val => console.log(val));
+```
+![](images/11-operators.jpg)
