@@ -28,13 +28,18 @@ share()
  */
 
 const {interval, Subject} = require('rxjs');
-const {take, multicast} = require('rxjs/operators');
+const {take, multicast, refCount} = require('rxjs/operators');
 
 
 const source$ = interval(1000)
     .pipe(
         take(4),
-        multicast(new Subject())
+        multicast(new Subject()),
+        /**
+         * Code will start execution on a first subscribe.
+         * So we DON'T NEED to call connect() in this case.
+         */
+        refCount(),
     );
 
 
@@ -54,19 +59,11 @@ setTimeout(() => {
     )
 }, [2000])
 
-/**
- * THIS IS REQUIRED!!!
- * BECAUSE multicast() returns a "ConnectableObservable",
- * so to fire execution we will need
- * to call a connect() function.
- */
-source$.connect();
-
 /*
- OUTPUT:
+
+OUTPUT:
 
 🔴 ======== 0
-🟡 Timer 1: 0
 🔴 ======== 1
 🟡 Timer 1: 1
 🟢 Timer 2: 1
@@ -77,4 +74,4 @@ source$.connect();
 🟡 Timer 1: 3
 🟢 Timer 2: 3
 
-*/
+ */

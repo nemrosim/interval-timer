@@ -28,13 +28,19 @@ share()
  */
 
 const {interval, Subject} = require('rxjs');
-const {take, multicast} = require('rxjs/operators');
+const {take, share, refCount} = require('rxjs/operators');
 
 
 const source$ = interval(1000)
     .pipe(
         take(4),
-        multicast(new Subject())
+        /**
+         * Share is a combination of refCount() and publish().
+         * BUT!
+         * If all previous execution finished
+         * Then new subscription will be started from scratch.
+         */
+        share()
     );
 
 
@@ -54,19 +60,19 @@ setTimeout(() => {
     )
 }, [2000])
 
-/**
- * THIS IS REQUIRED!!!
- * BECAUSE multicast() returns a "ConnectableObservable",
- * so to fire execution we will need
- * to call a connect() function.
- */
-source$.connect();
+setTimeout(() => {
+    source$.subscribe(
+        value => console.log('🟪 Timer 3:', value),
+        null,
+        ()=>console.log('🟪 Timer 3 Completed')
+    )
+}, [4500])
 
 /*
- OUTPUT:
+
+OUTPUT:
 
 🔴 ======== 0
-🟡 Timer 1: 0
 🔴 ======== 1
 🟡 Timer 1: 1
 🟢 Timer 2: 1
@@ -76,5 +82,10 @@ source$.connect();
 🔴 ======== 3
 🟡 Timer 1: 3
 🟢 Timer 2: 3
+🟪 Timer 3: 0
+🟪 Timer 3: 1
+🟪 Timer 3: 2
+🟪 Timer 3: 3
+🟪 Timer 3 Completed
 
-*/
+ */
